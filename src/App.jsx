@@ -1,16 +1,16 @@
 import React from 'react'
-import {Route, Routes, useMatch}  from 'react-router-dom'
+import {Navigate, Route, Routes, useMatch}  from 'react-router-dom'
 import  Home  from './Pages/Students/Home'
 import CoursesList from './Pages/Students/CourseList'
 import CourseDetails from './Pages/Students/CourseDestails'
 import MyEnroll from './Pages/Students/MyEnroll'
 import Player from './Pages/Students/Player'
 import Loading from './Components/Students/Loading'
-import Eductore from './Pages/educator/Educator'
-import DashBoard from './Pages/educator/DashBoard'
-import AddCourse from './Pages/educator/AddCourse'
-import MyCourses from './Pages/educator/MyCourses'
-import StundentEnroll from './Pages/educator/StudentsEnroll'
+import Educatore from './Pages/Educator/Educator'
+import DashBoard from './Pages/Educator/DashBoard'
+import AddCourse from './Pages/Educator/AddCourse'
+import MyCourses from './Pages/Educator/MyCourses'
+import StundentEnroll from './Pages/Educator/StudentsEnroll'
 import Navbar from './Components/Students/Navbar'
 
 const App = () => {
@@ -27,12 +27,13 @@ const App = () => {
       <Route path='/player/:courseId' element={ <Player/>} />
       <Route path='/loading/:path' element={ <Loading/>} />
       
-      <Route path='/educator' element={<Eductore/>} >
-            <Route path='dashboard' element={<DashBoard/>}/>
-            <Route path='add-course' element={<AddCourse/>}/>
-            <Route path='my-courses' element={<MyCourses/>}/>
-            <Route path='stundent-enroll' element={<StundentEnroll/>}/>
-      </Route>
+      <Route path='/educator' element={<Educatore />}>
+          <Route index element={<Navigate to="dashboard" replace />} />
+          <Route path='dashboard' element={<DashBoard />} />
+          <Route path='add-course' element={<AddCourse />} />
+          <Route path='my-courses' element={<MyCourses />} />
+          <Route path='stundent-enroll' element={<StundentEnroll />} />
+        </Route>
      </Routes>
       
     </div>
