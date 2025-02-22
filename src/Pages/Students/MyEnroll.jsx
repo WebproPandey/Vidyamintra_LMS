@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../../Context/AppContext'
 import { useNavigate } from 'react-router-dom'
-
+import {Line} from 'rc-progress'
+import Footer from '../../Components/Students/Footer'
+  
 const MyEnroll = () => {
   const navigate =  useNavigate()
   const {EnrolledCourse , calculateCourseDuration} = useContext(AppContext)
@@ -40,6 +42,7 @@ const MyEnroll = () => {
                  <img src={course.courseThumbnail} className='w-14 sm:w-24  md:w-24' alt="" />
                  <div className='flex-1'>
                   <p className='mb-1 max-sm:text-sm'>{course.courseTitle}</p>
+                  <Line strokeWidth={2} percent={progressArray[index] ? (progressArray[index].leactureCompleted *100) /  progressArray[index].totalLectures : 0} className='bg-gray-300 rounded-full' />
                  </div>
               </td>
               <td className='px-4 py-3 max-sm:hidden'>
@@ -60,6 +63,7 @@ const MyEnroll = () => {
         </tbody>
        </table>
     </div>
+    <Footer/>
     </>
 
   )
